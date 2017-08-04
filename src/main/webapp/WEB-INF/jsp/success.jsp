@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -11,6 +12,7 @@
     <title>Success</title>
 </head>
 <body>
-
+<h2><s:property value="nowDate" /></h2>
+<h2>Thank you for Log-in dear <s:property value="name" />. </h2>
 </body>
 </html>
