@@ -16,9 +16,9 @@ public class LoginAction extends ActionSupport {
     @Override
     public void validate(){
         if (name==null || name.length()==0)
-            addActionError(getText("error.enter.name"));
+            addFieldError("name", getText("error.enter.name"));
         if (password==null || password.length()==0)
-            addActionError(getText("error.enter.password"));
+            addFieldError("password", getText("error.enter.password"));
     }
 
     @Override
