@@ -1,5 +1,7 @@
-package com.art.struts2.login;
+package com.art.struts2.login.action;
 
+import com.art.struts2.login.model.User;
+import com.art.struts2.login.util.UserManager;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.Date;
@@ -15,10 +17,18 @@ public class LoginAction extends ActionSupport {
 
     @Override
     public void validate(){
+
         if (name==null || name.length()==0)
             addFieldError("name", getText("error.enter.name"));
         if (password==null || password.length()==0)
             addFieldError("password", getText("error.enter.password"));
+        User user = UserManager.selectUserById(1);
+        if(name.equals(user.getUserName()) && password.equals(user.getUserPassword())){
+
+        }
+        else {
+            addActionError("wrong username and password");
+        }
     }
 
     @Override

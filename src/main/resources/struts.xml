@@ -10,7 +10,7 @@
 	    <action name="">
             <result>/WEB-INF/jsp/index.jsp</result>
         </action>
-	   <action name="loginAction" class="com.art.struts2.login.LoginAction">
+	   <action name="loginAction" class="com.art.struts2.login.action.LoginAction">
 	      <result name="input">/WEB-INF/jsp/index.jsp</result>
 	      <result name="success">/WEB-INF/jsp/success.jsp</result>
 	      <result name="error">/WEB-INF/jsp/index.jsp</result>
