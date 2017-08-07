@@ -10,6 +10,9 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by user on 05.08.2017.
@@ -45,13 +48,20 @@ public class LoginAction extends ActionSupport {
             SqlSession session = sqlSessionFactory.openSession();
 
             //select a particular student  by  id
-            User user = (User) session.selectOne("User.getById", 1);
+//            User user = (User) session.selectOne("User.getById", 1);
+
+            Map<String, Object> parms = new HashMap<String, Object>();
+            parms.put("name", name);
+            parms.put("password", password);
+
+//            List<User> list = session.selectList("getUsers",parms);
+            User user = session.selectOne("User.getByNameAndPassword",parms);
 
 
 
             session.commit();
             session.close();
-            if (name.equals(user.getName()) && password.equals(user.getPassword())) {
+            if (user != null) {
                 addActionMessage("login.success");
             } else {
                 addActionError("login.wrong");
