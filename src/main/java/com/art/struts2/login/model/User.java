@@ -5,32 +5,42 @@ package com.art.struts2.login.model;
  */
 public class User {
 
-    private Integer userId;
+    private Integer id;
+    private String name;
+    private String password;
 
-    public Integer getUserId() {
-        return userId;
+    public User(int id, String name, String password) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.password = password;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public User() {}
+
+    public Integer getId() {
+        return id;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getName() {
+        return name;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public void setName(String userName) {
+        this.name = userName;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    private String userName;
-    private String userPassword;
+    public void setPassword(String userPassword) {
+        this.password = userPassword;
+    }
+
+
 }

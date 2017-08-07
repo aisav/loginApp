@@ -1,9 +1,14 @@
 package com.art.struts2.login.action;
 
 import com.art.struts2.login.model.User;
-import com.art.struts2.login.util.UserManager;
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import java.io.IOException;
+import java.io.Reader;
 import java.util.Date;
 
 /**
@@ -18,16 +23,39 @@ public class LoginAction extends ActionSupport {
     @Override
     public void validate(){
 
-        if (name==null || name.length()==0)
+        boolean isFieldEmpty = false;
+        if (name==null || name.length()==0) {
             addFieldError("name", getText("error.enter.name"));
-        if (password==null || password.length()==0)
-            addFieldError("password", getText("error.enter.password"));
-        User user = UserManager.selectUserById(1);
-        if(name.equals(user.getUserName()) && password.equals(user.getUserPassword())){
-
+            isFieldEmpty = true;
         }
-        else {
-            addActionError("wrong username and password");
+        if (password==null || password.length()==0) {
+            addFieldError("password", getText("error.enter.password"));
+            isFieldEmpty = true;
+        }
+        if(!isFieldEmpty) {
+//        User user; //= UserManager.selectUserById(1);
+            int i = 1;
+            Reader reader = null;
+            try {
+                reader = Resources.getResourceAsReader("mybatis.xml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+            SqlSession session = sqlSessionFactory.openSession();
+
+            //select a particular student  by  id
+            User user = (User) session.selectOne("User.getById", 1);
+
+
+
+            session.commit();
+            session.close();
+            if (name.equals(user.getName()) && password.equals(user.getPassword())) {
+                addActionMessage("login.success");
+            } else {
+                addActionError("login.wrong");
+            }
         }
     }
 

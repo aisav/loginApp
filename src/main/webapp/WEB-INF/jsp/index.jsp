@@ -10,11 +10,11 @@
 
 <body>
 <h1><s:text name="welcome" /></h1>
-<%--<s:if test="hasActionErrors()">
+<s:if test="hasActionErrors()">
     <div id="fieldErrors">
         <s:actionerror/>
     </div>
-</s:if>--%>
+</s:if>
 <s:form action="loginAction" namespace="/" method="post" name="myForm" theme="xhtml">
 
     <s:textfield name="name" size="12" maxlength="12" key="your.name-label"/>
