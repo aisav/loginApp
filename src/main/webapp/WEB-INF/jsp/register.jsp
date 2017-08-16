@@ -10,11 +10,15 @@
 
 <body>
 <h1><s:text name="welcome" /></h1>
+<s:if test="hasActionErrors()">
+    <div id="fieldErrors">
+        <s:actionerror/>
+    </div>
+</s:if>
+<s:form action="registration.htm" namespace="/" method="post" name="myForm" theme="xhtml">
 
-<ul>
-        <li><a href="<s:url action="registerForm"/>">Registration</a></li>
-        <li><a href="<s:url action="loginForm"/>">Log-In</a></li>
-</ul>
-
+    <s:textfield name="nowDate" size="12" maxlength="12" key="your.name-label"/>
+    <s:submit value="Submit" />
+</s:form>
 </body>
 </html>

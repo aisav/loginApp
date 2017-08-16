@@ -6,6 +6,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -73,6 +74,12 @@ public class LoginAction extends ActionSupport {
     public String execute() throws Exception {
         nowDate = new Date();
         return ActionSupport.SUCCESS;
+    }
+
+    @SkipValidation
+    public String loginForm() {
+        nowDate = new Date();
+        return "login";
     }
 
     public String getName() {
