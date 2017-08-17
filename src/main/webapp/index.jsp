@@ -12,8 +12,8 @@
 <h1><s:text name="welcome" /></h1>
 
 <ul>
-        <li><a href="<s:url action="registerForm"/>">Registration</a></li>
-        <li><a href="<s:url action="loginForm"/>">Log-In</a></li>
+        <li><a href="<s:url action="registerLink"/>">Registration</a></li>
+        <li><a href="<s:url action="loginLink"/>">Log-In</a></li>
 </ul>
 
 </body>

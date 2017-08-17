@@ -7,21 +7,28 @@
 <struts>
 	<include file="struts-default.xml"/>
 	<package name="default" extends="struts-default">
-	    <action name="">
-            <result>/WEB-INF/jsp/index.jsp</result>
-        </action>
+
+		<result-types>
+			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
 	   <action name="loginAction" class="com.art.struts2.login.action.LoginAction">
-	      <result name="input">/WEB-INF/jsp/index.jsp</result>
-	      <result name="success">/WEB-INF/jsp/success.jsp</result>
-	      <result name="error">/WEB-INF/jsp/index.jsp</result>
+	      <result name="input">/jsp/pages/login.jsp</result>
+	      <result name="success">/jsp/pages/success.jsp</result>
 	   </action>
-		<action name="loginForm" class="com.art.struts2.login.action.LoginAction" method="input">
-			<result name="input">/WEB-INF/jsp/login.jsp</result>
-			<!--<result name="login">/WEB-INF/jsp/login.jsp</result>-->
+
+		<action name="registerAction" class="com.art.struts2.login.action.RegisterAction">
+			<result name="input">/jsp/pages/register.jsp</result>
+			<result name="success">/jsp/pages/success.jsp</result>
 		</action>
-		<action name="registerForm" class="com.art.struts2.login.action.RegisterAction" method="input">
-			<result name="input">/WEB-INF/jsp/register.jsp</result>
-			<!--<result name="register">/WEB-INF/jsp/register.jsp</result>-->
+
+<!--LinkAction-->
+		<action name="loginLink" >
+			<result name="success" type="tiles">login</result>
+		</action>
+
+		<action name="registerLink" >
+			<result name="success" type="tiles">register</result>
 		</action>
 	</package>
 </struts>

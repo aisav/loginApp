@@ -21,5 +21,10 @@
   WHERE (NAME = #{name}) AND (PASSWORD = #{password});
     </select>
 
+    <insert id = "add" parameterType = "User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO USER (NAME , PASSWORD )
+        VALUES (#{name}, #{password});
+    </insert>
+
 
 </mapper>

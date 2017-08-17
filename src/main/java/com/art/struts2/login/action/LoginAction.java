@@ -76,11 +76,11 @@ public class LoginAction extends ActionSupport {
         return ActionSupport.SUCCESS;
     }
 
-    @SkipValidation
-    public String loginForm() {
+/*    @SkipValidation
+    public String loginLink() {
         nowDate = new Date();
         return "login";
-    }
+    }*/
 
     public String getName() {
         return name;

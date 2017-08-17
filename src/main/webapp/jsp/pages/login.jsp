@@ -9,15 +9,16 @@
 </head>
 
 <body>
-<h1><s:text name="welcome" /></h1>
+<h1><s:text name="login" /></h1>
 <s:if test="hasActionErrors()">
     <div id="fieldErrors">
         <s:actionerror/>
     </div>
 </s:if>
-<s:form action="registration.htm" namespace="/" method="post" name="myForm" theme="xhtml">
+<s:form action="loginAction" namespace="/" method="post" name="loginForm" theme="xhtml">
 
-    <s:textfield name="nowDate" size="12" maxlength="12" key="your.name-label"/>
+    <s:textfield name="name" size="12" maxlength="12" key="your.name-label"/>
+    <s:textfield name="password" type="password" size="12" maxlength="12" key="your.password-label"/>
     <s:submit value="Submit" />
 </s:form>
 </body>
